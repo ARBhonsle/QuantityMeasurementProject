@@ -54,20 +54,20 @@ public class QuantityTest {
     }
 
     @Test
-    public void given0InchAnd0Inch_shouldReturnEqual(){
+    public void given0InchAnd0Inch_shouldReturnEqual() {
         Inch inch1 = new Inch(0.0);
         Inch inch2 = new Inch(0.0);
         boolean equal = inch1.equals(inch2);
-        Assertions.assertEquals(inch1,inch2);
+        Assertions.assertEquals(inch1, inch2);
         Assertions.assertTrue(equal);
     }
 
     @Test
-    public void given0InchAnd1Inch_shouldReturnNotEqual(){
+    public void given0InchAnd1Inch_shouldReturnNotEqual() {
         Inch inch1 = new Inch(0.0);
         Inch inch2 = new Inch(1.0);
         boolean equal = inch1.equals(inch2);
-        Assertions.assertNotEquals(inch1,inch2);
+        Assertions.assertNotEquals(inch1, inch2);
         Assertions.assertFalse(equal);
     }
 

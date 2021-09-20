@@ -8,7 +8,7 @@ public class Feet {
 
     public Feet(double v) {
         this.value = v;
-        exception=null;
+        exception = null;
     }
 
     public static QuantityMeasurementException getException() {
@@ -31,7 +31,7 @@ public class Feet {
         }
         if (getClass() != o.getClass()) {
             exception = new QuantityMeasurementException("Parameters Types do not match", QuantityMeasurementException.ExceptionType.TYPE_EXCEPTION);
-            if(o.getClass() == Inch.class) {
+            if (o.getClass() == Inch.class) {
                 exception = null;
                 if (((Inch) o).getValue() / 12 == this.getValue()) {
                     return true;
