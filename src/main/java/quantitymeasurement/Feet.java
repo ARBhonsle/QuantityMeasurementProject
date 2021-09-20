@@ -30,7 +30,8 @@ public class Feet {
             return true;
         }
         if (o.getClass() == Inch.class) {
-            if (Double.compare(((Inch) o).getValue() / 12, this.getValue()) == 0) {
+            Inch inch = new Inch(((Inch) o).getValue()/12);
+            if (Double.compare(inch.getValue(), this.getValue()) == 0) {
                 return true;
             } else{
                 exception = new QuantityMeasurementException("Parameter value not Equal", QuantityMeasurementException.ExceptionType.VALUE_UNEQUAL_EXCEPTION);

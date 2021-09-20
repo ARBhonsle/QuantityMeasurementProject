@@ -33,7 +33,8 @@ public class QuantityTest {
         try {
             Feet feet = null;
             Feet feet2 = new Feet(1.0);
-            feet2.equals(feet);
+            boolean result = feet2.equals(feet);
+            Assertions.assertFalse(result);
             Assertions.assertNotEquals(feet, feet2);
             Assertions.assertEquals(QuantityMeasurementException.ExceptionType.NULL_EXCEPTION, Feet.getException().exceptionType);
         } catch (Exception e) {
@@ -45,7 +46,8 @@ public class QuantityTest {
     public void givenSameFeet_whenChecked_shouldThrowReferenceException() {
         try {
             Feet feet2 = new Feet(1.0);
-            feet2.equals(feet2);
+            boolean result = feet2.equals(feet2);
+            Assertions.assertTrue(result);
             Assertions.assertEquals(feet2, feet2);
             Assertions.assertEquals(QuantityMeasurementException.ExceptionType.REFERENCE_EXCEPTION, Feet.getException().exceptionType);
         } catch (Exception e) {
@@ -76,7 +78,8 @@ public class QuantityTest {
         try {
             Inch inch = null;
             Inch inch1 = new Inch(0.0);
-            inch1.equals(inch);
+            boolean result = inch1.equals(inch);
+            Assertions.assertFalse(result);
             Assertions.assertNotEquals(inch, inch1);
             Assertions.assertEquals(QuantityMeasurementException.ExceptionType.NULL_EXCEPTION, Feet.getException().exceptionType);
         } catch (Exception e) {
@@ -88,7 +91,8 @@ public class QuantityTest {
     public void givenSameInch_whenChecked_shouldThrowReferenceException() {
         try {
             Inch inch1 = new Inch(0.0);
-            inch1.equals(inch1);
+            boolean result = inch1.equals(inch1);
+            Assertions.assertTrue(result);
             Assertions.assertEquals(inch1, inch1);
             Assertions.assertEquals(QuantityMeasurementException.ExceptionType.REFERENCE_EXCEPTION, inch1.getException().exceptionType);
         } catch (Exception e) {
@@ -101,8 +105,8 @@ public class QuantityTest {
         try {
             Feet feet = new Feet(0.0);
             Inch inch = new Inch(0.0);
-            feet.equals(inch);
-            Assertions.assertEquals(feet, inch);
+            boolean result = feet.equals(inch);
+            Assertions.assertTrue(result);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -111,10 +115,10 @@ public class QuantityTest {
     @Test
     public void given1FeetAnd12Inch_whenChecked_shouldReturnEqual() {
         try {
-            Feet feet = new Feet(0.0);
+            Feet feet = new Feet(1.0);
             Inch inch = new Inch(12.0);
-            feet.equals(inch);
-            Assertions.assertEquals(feet, inch);
+            boolean result = feet.equals(inch);
+            Assertions.assertTrue(result);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -123,10 +127,10 @@ public class QuantityTest {
     @Test
     public void given12InchAnd1Feet_whenChecked_shouldReturnEqual() {
         try {
-            Feet feet = new Feet(0.0);
+            Feet feet = new Feet(1.0);
             Inch inch = new Inch(12.0);
-            inch.equals(feet);
-            Assertions.assertEquals(inch, feet);
+            boolean result = inch.equals(feet);
+            Assertions.assertTrue(result);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -135,10 +139,10 @@ public class QuantityTest {
     @Test
     public void given1FeetAnd2Inch_whenChecked_shouldReturnNotEqual() {
         try {
-            Feet feet = new Feet(0.0);
+            Feet feet = new Feet(1.0);
             Inch inch = new Inch(2.0);
-            feet.equals(inch);
-            Assertions.assertNotEquals(feet, inch);
+            boolean result = feet.equals(inch);
+            Assertions.assertFalse(result);
         } catch (Exception e) {
             e.printStackTrace();
         }
