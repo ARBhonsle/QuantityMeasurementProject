@@ -2,11 +2,11 @@ package quantitymeasurement;
 
 import java.util.Objects;
 
-public class Feet {
+public class Inch {
     private final double value;
     public static QuantityMeasurementException exception;
 
-    public Feet(double v) {
+    public Inch(double v) {
         this.value = v;
         exception=null;
     }
@@ -31,16 +31,16 @@ public class Feet {
         }
         if (getClass() != o.getClass()) {
             exception = new QuantityMeasurementException("Parameters Types do not match", QuantityMeasurementException.ExceptionType.TYPE_EXCEPTION);
-            if(o.getClass() == Inch.class) {
-                exception = null;
-                if (((Inch) o).getValue() / 12 == this.getValue()) {
+            if(o.getClass() == Feet.class){
+                exception=null;
+                if(((Feet) o).getValue()*12 == this.getValue()){
                     return true;
                 }
             }
             return false;
         }
-        Feet feet = (Feet) o;
-        if (Double.compare(feet.value, value) != 0) {
+        Inch inch = (Inch) o;
+        if (Double.compare(inch.value, value) != 0) {
             exception = new QuantityMeasurementException("Parameter value not Equal", QuantityMeasurementException.ExceptionType.VALUE_UNEQUAL_EXCEPTION);
             return false;
         }
