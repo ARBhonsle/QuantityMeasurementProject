@@ -33,8 +33,7 @@ public class QuantityTest {
         try {
             Feet feet = null;
             Feet feet2 = new Feet(1.0);
-            boolean result = feet2.equals(feet);
-            Assertions.assertFalse(result);
+            feet2.equals(feet);
             Assertions.assertNotEquals(feet, feet2);
             Assertions.assertEquals(QuantityMeasurementException.ExceptionType.NULL_EXCEPTION, Feet.getException().exceptionType);
         } catch (Exception e) {
@@ -80,7 +79,6 @@ public class QuantityTest {
             Inch inch1 = new Inch(0.0);
             boolean result = inch1.equals(inch);
             Assertions.assertFalse(result);
-            Assertions.assertNotEquals(inch, inch1);
             Assertions.assertEquals(QuantityMeasurementException.ExceptionType.NULL_EXCEPTION, Feet.getException().exceptionType);
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,7 +91,6 @@ public class QuantityTest {
             Inch inch1 = new Inch(0.0);
             boolean result = inch1.equals(inch1);
             Assertions.assertTrue(result);
-            Assertions.assertEquals(inch1, inch1);
             Assertions.assertEquals(QuantityMeasurementException.ExceptionType.REFERENCE_EXCEPTION, inch1.getException().exceptionType);
         } catch (Exception e) {
             e.printStackTrace();
