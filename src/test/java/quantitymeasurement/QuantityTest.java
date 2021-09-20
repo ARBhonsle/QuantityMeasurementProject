@@ -112,9 +112,33 @@ public class QuantityTest {
     public void given1FeetAnd12Inch_whenChecked_shouldReturnEqual() {
         try {
             Feet feet = new Feet(0.0);
-            Inch inch = new Inch(0.0);
+            Inch inch = new Inch(12.0);
             feet.equals(inch);
             Assertions.assertEquals(feet, inch);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void given12InchAnd1Feet_whenChecked_shouldReturnEqual() {
+        try {
+            Feet feet = new Feet(0.0);
+            Inch inch = new Inch(12.0);
+            inch.equals(feet);
+            Assertions.assertEquals(inch, feet);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void given1FeetAnd2Inch_whenChecked_shouldReturnNotEqual() {
+        try {
+            Feet feet = new Feet(0.0);
+            Inch inch = new Inch(2.0);
+            feet.equals(inch);
+            Assertions.assertNotEquals(feet, inch);
         } catch (Exception e) {
             e.printStackTrace();
         }

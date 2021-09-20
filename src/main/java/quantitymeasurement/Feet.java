@@ -29,14 +29,16 @@ public class Feet {
             exception = new QuantityMeasurementException("Reference Exception", QuantityMeasurementException.ExceptionType.REFERENCE_EXCEPTION);
             return true;
         }
+        if (o.getClass() == Inch.class) {
+            if (Double.compare(((Inch) o).getValue() / 12, this.getValue()) == 0) {
+                return true;
+            } else{
+                exception = new QuantityMeasurementException("Parameter value not Equal", QuantityMeasurementException.ExceptionType.VALUE_UNEQUAL_EXCEPTION);
+                return false;
+            }
+        }
         if (getClass() != o.getClass()) {
             exception = new QuantityMeasurementException("Parameters Types do not match", QuantityMeasurementException.ExceptionType.TYPE_EXCEPTION);
-            if (o.getClass() == Inch.class) {
-                exception = null;
-                if (((Inch) o).getValue() / 12 == this.getValue()) {
-                    return true;
-                }
-            }
             return false;
         }
         Feet feet = (Feet) o;
