@@ -1,9 +1,9 @@
 package quantitymeasurement;
 
 public class Length {
-    private static final Double FEET_TO_INCH = 12.0,YARD_TO_FEET=3.0,YARD_TO_INCH=36.0;
+    private static final Double FEET_TO_INCH = 12.0, YARD_TO_FEET = 3.0, YARD_TO_INCH = 36.0, INCH_TO_CM = 2.5;
 
-    enum Unit {FEET, INCH, YARD}
+    enum Unit {FEET, INCH, YARD, CM}
 
     private final double value;
     private final Unit unit;
@@ -22,29 +22,35 @@ public class Length {
     }
 
     public boolean compare(Length that) {
-        if(that == null){
+        if (that == null) {
             return false;
         }
-        if(this.getUnit().equals(that.getUnit())){
+        if (this.getUnit().equals(that.getUnit())) {
             return this.equals(that);
         }
-        if(this.getUnit().equals(Unit.FEET) && that.getUnit().equals(Unit.INCH)){
-            return Double.compare(this.getValue()*FEET_TO_INCH,that.getValue())==0;
+        if (this.getUnit().equals(Unit.FEET) && that.getUnit().equals(Unit.INCH)) {
+            return Double.compare(this.getValue() * FEET_TO_INCH, that.getValue()) == 0;
         }
-        if(this.getUnit().equals(Unit.INCH) && that.getUnit().equals(Unit.FEET)){
-            return Double.compare(this.getValue()/FEET_TO_INCH,that.getValue())==0;
+        if (this.getUnit().equals(Unit.INCH) && that.getUnit().equals(Unit.FEET)) {
+            return Double.compare(this.getValue() / FEET_TO_INCH, that.getValue()) == 0;
         }
-        if(this.getUnit().equals(Unit.FEET) && that.getUnit().equals(Unit.YARD)){
-            return Double.compare(this.getValue()/YARD_TO_FEET,that.getValue())==0;
+        if (this.getUnit().equals(Unit.FEET) && that.getUnit().equals(Unit.YARD)) {
+            return Double.compare(this.getValue() / YARD_TO_FEET, that.getValue()) == 0;
         }
-        if(this.getUnit().equals(Unit.YARD) && that.getUnit().equals(Unit.FEET)){
-            return Double.compare(this.getValue()*YARD_TO_FEET,that.getValue())==0;
+        if (this.getUnit().equals(Unit.YARD) && that.getUnit().equals(Unit.FEET)) {
+            return Double.compare(this.getValue() * YARD_TO_FEET, that.getValue()) == 0;
         }
-        if(this.getUnit().equals(Unit.INCH) && that.getUnit().equals(Unit.YARD)){
-            return Double.compare(this.getValue()/YARD_TO_INCH,that.getValue())==0;
+        if (this.getUnit().equals(Unit.INCH) && that.getUnit().equals(Unit.YARD)) {
+            return Double.compare(this.getValue() / YARD_TO_INCH, that.getValue()) == 0;
         }
-        if(this.getUnit().equals(Unit.YARD) && that.getUnit().equals(Unit.INCH)){
-            return Double.compare(this.getValue()*YARD_TO_INCH,that.getValue())==0;
+        if (this.getUnit().equals(Unit.YARD) && that.getUnit().equals(Unit.INCH)) {
+            return Double.compare(this.getValue() * YARD_TO_INCH, that.getValue()) == 0;
+        }
+        if (this.getUnit().equals(Unit.CM) && that.getUnit().equals(Unit.INCH)) {
+            return Double.compare(this.getValue() / INCH_TO_CM, that.getValue()) == 0;
+        }
+        if (this.getUnit().equals(Unit.INCH) && that.getUnit().equals(Unit.CM)) {
+            return Double.compare(this.getValue() * INCH_TO_CM, that.getValue()) == 0;
         }
         return false;
     }

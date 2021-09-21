@@ -77,7 +77,7 @@ public class QuantityTest {
     }
 
     @Test
-    public void givenSameInch_whenCompared_shouldReturnEqual() {
+    public void given0InchAnd0Inch_whenCompared_shouldReturnEqual() {
         try {
             Length inch1 = new Length(Length.Unit.INCH,0.0);
             boolean result = inch1.compare(inch1);
@@ -181,11 +181,33 @@ public class QuantityTest {
         }
     }
     @Test
+    public void given1YardAnd1Feet_shouldReturnNotEqual(){
+        try {
+            Length yard = new Length(Length.Unit.YARD,1.0);
+            Length feet = new Length(Length.Unit.FEET,1.0);
+            boolean result = yard.compare(feet);
+            Assertions.assertFalse(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
     public void given1InchAnd1Yard_shouldReturnNotEqual(){
         try {
             Length inch = new Length(Length.Unit.INCH,1.0);
             Length yard = new Length(Length.Unit.YARD,1.0);
             boolean result = inch.compare(yard);
+            Assertions.assertFalse(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given1YardAnd1Inch_shouldReturnNotEqual(){
+        try {
+            Length yard = new Length(Length.Unit.YARD,1.0);
+            Length inch = new Length(Length.Unit.INCH,1.0);
+            boolean result = yard.compare(inch);
             Assertions.assertFalse(result);
         } catch (Exception e) {
             e.printStackTrace();
@@ -213,5 +235,26 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
-
+    @Test
+    public void given5CmAnd2Inch_shouldReturnEqual(){
+        try {
+            Length cm = new Length(Length.Unit.CM,5.0);
+            Length inch = new Length(Length.Unit.INCH,2.0);
+            boolean result = cm.compare(inch);
+            Assertions.assertTrue(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given2InchAnd5Cm_shouldReturnEqual(){
+        try {
+            Length inch = new Length(Length.Unit.INCH,2.0);
+            Length cm = new Length(Length.Unit.CM,5.0);
+            boolean result = inch.compare(cm);
+            Assertions.assertTrue(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
