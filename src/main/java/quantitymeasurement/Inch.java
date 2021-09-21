@@ -33,7 +33,7 @@ public class Inch {
             Feet feet = new Feet(((Feet) o).getValue()*12);
             if (Double.compare(feet.getValue(), this.getValue()) == 0) {
                 return true;
-            }else{
+            } else {
                 exception = new QuantityMeasurementException("Parameter value not Equal", QuantityMeasurementException.ExceptionType.VALUE_UNEQUAL_EXCEPTION);
                 return false;
             }
