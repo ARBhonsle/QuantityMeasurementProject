@@ -1,10 +1,9 @@
 package quantitymeasurement;
 
-
-public class Inch {
+public class Yard {
     private final double value;
 
-    public Inch(double v) {
+    public Yard(double v) {
         this.value = v;
     }
 
@@ -20,16 +19,16 @@ public class Inch {
         if (o == this) {
             return true;
         }
-        if (o.getClass() == Feet.class) {
-            Feet feet = new Feet(((Feet) o).getValue()*12);
-            if (Double.compare(feet.getValue(), this.getValue()) == 0) {
+        if (o.getClass() == Inch.class) {
+            Inch inch = new Inch(((Inch) o).getValue()/36);
+            if (Double.compare(inch.getValue(), this.getValue()) == 0) {
                 return true;
             } else {
                 return false;
             }
         }
-        if (o.getClass() == Yard.class) {
-            Yard feet = new Yard(((Yard) o).getValue()*12*3);
+        if (o.getClass() == Feet.class) {
+            Feet feet = new Feet(((Feet) o).getValue()/3);
             if (Double.compare(feet.getValue(), this.getValue()) == 0) {
                 return true;
             } else {
@@ -39,8 +38,8 @@ public class Inch {
         if (getClass() != o.getClass()) {
             return false;
         }
-        Inch inch = (Inch) o;
-        if (Double.compare(inch.value, value) != 0) {
+        Yard feet = (Yard) o;
+        if (Double.compare(feet.value, value) != 0) {
             return false;
         }
         return true;
