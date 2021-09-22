@@ -416,6 +416,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given2CmAnd3Cm_shouldReturn2Inch() {
         try {
@@ -428,6 +429,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given1YardAnd1Yard_shouldReturn72Inch() {
         try {
@@ -440,6 +442,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given5CmAnd1Yard_shouldReturn38Inch() {
         try {
@@ -452,6 +455,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given1YardAnd1Feet_shouldReturn48Inch() {
         try {
@@ -464,6 +468,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given1FeetAnd2Inch_shouldReturn14Inch() {
         try {
@@ -504,6 +509,7 @@ public class QuantityTest {
     }
 
     // Comparing Volume: Gallon, Litre, Ml in base of Litre
+
     @Test
     public void given0GallonAnd0Gallon_shouldReturnEqual() {
         try {
@@ -515,6 +521,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given0GallonAnd1Gallon_shouldReturnNotEqual() {
         try {
@@ -526,6 +533,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given0LitreAnd0Litre_shouldReturnEqual() {
         try {
@@ -537,6 +545,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given0LitreAnd1Litre_shouldReturnNotEqual() {
         try {
@@ -548,6 +557,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given0MlAnd0Ml_shouldReturnEqual() {
         try {
@@ -559,6 +569,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given0MlAnd1Ml_shouldReturnNotEqual() {
         try {
@@ -570,6 +581,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given0GallonAnd0Litre_shouldReturnEqual() {
         try {
@@ -581,6 +593,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given100GallonAnd378Litre_shouldReturnEqual() {
         try {
@@ -592,6 +605,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given1GallonAnd1Litre_shouldReturnNotEqual() {
         try {
@@ -603,6 +617,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given3780MlAnd1Gallon_shouldReturnEqual() {
         try {
@@ -614,6 +629,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given1MlAnd1Gallon_shouldReturnNotEqual() {
         try {
@@ -625,6 +641,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given1000MlAnd1Litre_shouldReturnEqual() {
         try {
@@ -636,6 +653,7 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void given1MlAnd1Litre_shouldReturnNotEqual() {
         try {
@@ -643,6 +661,85 @@ public class QuantityTest {
             QuantityMeasurement litre = new QuantityMeasurement(Volume.LITRE, 1.0);
             boolean result = gallon.compare(litre);
             Assertions.assertFalse(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Addition of Volume (base unit : litre)
+    @Test
+    public void given100GallonAnd100Gallon_shouldReturn756Litre() {
+        try {
+            QuantityMeasurement gallon1 = new QuantityMeasurement(Volume.GALLON, 100.0);
+            QuantityMeasurement gallon2 = new QuantityMeasurement(Volume.GALLON, 100.0);
+            double result = gallon1.addition(gallon2);
+            double expectedResult = 756;
+            Assertions.assertEquals(expectedResult, result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void given1LitreAnd1Litre_shouldReturn2Litre() {
+        try {
+            QuantityMeasurement litre1 = new QuantityMeasurement(Volume.LITRE, 1.0);
+            QuantityMeasurement litre2 = new QuantityMeasurement(Volume.LITRE, 1.0);
+            double result = litre1.addition(litre2);
+            double expectedResult = 2;
+            Assertions.assertEquals(expectedResult, result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void given1000MlAnd1000Ml_shouldReturn2Litre() {
+        try {
+            QuantityMeasurement ml1 = new QuantityMeasurement(Volume.ML, 1000.0);
+            QuantityMeasurement ml2 = new QuantityMeasurement(Volume.ML, 1000.0);
+            double result = ml1.addition(ml2);
+            double expectedResult = 2;
+            Assertions.assertEquals(expectedResult, result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void given100GallonAnd10Litre_shouldReturn388Litre() {
+        try {
+            QuantityMeasurement gallon = new QuantityMeasurement(Volume.GALLON, 100.0);
+            QuantityMeasurement litre = new QuantityMeasurement(Volume.LITRE, 10.0);
+            double result = gallon.addition(litre);
+            double expectedResult = 388;
+            Assertions.assertEquals(expectedResult, result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void given1000MlAnd100Gallon_shouldReturn379Litre() {
+        try {
+            QuantityMeasurement ml = new QuantityMeasurement(Volume.ML, 1000.0);
+            QuantityMeasurement gallon = new QuantityMeasurement(Volume.GALLON, 100.0);
+            double result = ml.addition(gallon);
+            double expectedResult = 379;
+            Assertions.assertEquals(expectedResult, result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void given1000MlAnd1Litre_shouldReturn2Litre() {
+        try {
+            QuantityMeasurement gallon = new QuantityMeasurement(Volume.ML, 1000.0);
+            QuantityMeasurement litre = new QuantityMeasurement(Volume.LITRE, 1.0);
+            double result = gallon.addition(litre);
+            double expectedResult = 2;
+            Assertions.assertEquals(expectedResult, result);
         } catch (Exception e) {
             e.printStackTrace();
         }
