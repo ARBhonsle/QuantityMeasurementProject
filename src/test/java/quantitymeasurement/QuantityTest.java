@@ -744,4 +744,168 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
+    // Weight Comparison for kg, grams, tonne in base unit : kg
+
+    @Test
+    public void given0GramsAnd0Kg_shouldReturnEqual() {
+        try {
+            QuantityMeasurement grams = new QuantityMeasurement(Weight.GRAMS, 0.0);
+            QuantityMeasurement kg = new QuantityMeasurement(Weight.KG, 0.0);
+            boolean result = grams.compare(kg);
+            Assertions.assertTrue(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given1000GramsAnd1Kg_shouldReturnEqual() {
+        try {
+            QuantityMeasurement grams = new QuantityMeasurement(Weight.GRAMS, 1000.0);
+            QuantityMeasurement kg = new QuantityMeasurement(Weight.KG, 1.0);
+            boolean result = grams.compare(kg);
+            Assertions.assertTrue(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given0TonneAnd0Grams_shouldReturnEqual() {
+        try {
+            QuantityMeasurement tonne = new QuantityMeasurement(Weight.TONNE, 0.0);
+            QuantityMeasurement grams = new QuantityMeasurement(Weight.GRAMS, 0.0);
+            boolean result = tonne.compare(grams);
+            Assertions.assertTrue(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given1TonneAnd1000000Grams_shouldReturnEqual() {
+        try {
+            QuantityMeasurement tonne = new QuantityMeasurement(Weight.TONNE, 1.0);
+            QuantityMeasurement grams = new QuantityMeasurement(Weight.GRAMS, 1000000.0);
+            boolean result = tonne.compare(grams);
+            Assertions.assertTrue(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given0KgAnd0Tonne_shouldReturnEqual() {
+        try {
+            QuantityMeasurement kg = new QuantityMeasurement(Weight.KG, 0.0);
+            QuantityMeasurement tonne = new QuantityMeasurement(Weight.TONNE, 0.0);
+            boolean result = kg.compare(tonne);
+            Assertions.assertTrue(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given1000KgAnd1Tonne_shouldReturnEqual() {
+        try {
+            QuantityMeasurement kg = new QuantityMeasurement(Weight.KG, 1000.0);
+            QuantityMeasurement tonne = new QuantityMeasurement(Weight.TONNE, 1.0);
+            boolean result = kg.compare(tonne);
+            Assertions.assertTrue(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void given1KgAnd1Tonne_shouldReturnNotEqual() {
+        try {
+            QuantityMeasurement kg = new QuantityMeasurement(Weight.KG, 1.0);
+            QuantityMeasurement tonne = new QuantityMeasurement(Weight.TONNE, 1.0);
+            boolean result = kg.compare(tonne);
+            Assertions.assertFalse(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given1KgAnd1Grams_shouldReturnNotEqual() {
+        try {
+            QuantityMeasurement kg = new QuantityMeasurement(Weight.KG, 1.0);
+            QuantityMeasurement grams = new QuantityMeasurement(Weight.GRAMS, 1.0);
+            boolean result = kg.compare(grams);
+            Assertions.assertFalse(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given1TonneAnd1Grams_shouldReturnNotEqual() {
+        try {
+            QuantityMeasurement tonne = new QuantityMeasurement(Weight.TONNE, 1.0);
+            QuantityMeasurement grams = new QuantityMeasurement(Weight.GRAMS, 1.0);
+            boolean result = tonne.compare(grams);
+            Assertions.assertFalse(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void given1TonneAnd1Tonne_shouldReturn2000Kg(){
+        try {
+            QuantityMeasurement tonne1 = new QuantityMeasurement(Weight.TONNE, 1.0);
+            QuantityMeasurement tonne2 = new QuantityMeasurement(Weight.TONNE, 1.0);
+            double result = tonne1.addition(tonne2);
+            double expectedResult = 2000;
+            Assertions.assertEquals(expectedResult, result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given1000GramsAnd1000Grams_shouldReturn2Kg(){
+        try {
+            QuantityMeasurement grams1 = new QuantityMeasurement(Weight.GRAMS, 1000.0);
+            QuantityMeasurement grams2 = new QuantityMeasurement(Weight.GRAMS, 1000.0);
+            double result = grams1.addition(grams2);
+            double expectedResult = 2;
+            Assertions.assertEquals(expectedResult, result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given1000KgAnd1Tonne_shouldReturn2000Kg(){
+        try {
+            QuantityMeasurement kg = new QuantityMeasurement(Weight.KG, 1000.0);
+            QuantityMeasurement tonne = new QuantityMeasurement(Weight.TONNE, 1.0);
+            double result = kg.addition(tonne);
+            double expectedResult = 2000;
+            Assertions.assertEquals(expectedResult, result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given1000GramsAnd1Kg_shouldReturn2Kg(){
+        try {
+            QuantityMeasurement grams = new QuantityMeasurement(Weight.GRAMS, 1000.0);
+            QuantityMeasurement kg = new QuantityMeasurement(Weight.KG, 1.0);
+            double result = grams.addition(kg);
+            double expectedResult = 2;
+            Assertions.assertEquals(expectedResult, result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given1000GramsAnd1Tonne_shouldReturn1001Kg(){
+        try {
+            QuantityMeasurement grams = new QuantityMeasurement(Weight.GRAMS, 1000.0);
+            QuantityMeasurement tonne = new QuantityMeasurement(Weight.TONNE, 1.0);
+            double result = grams.addition(tonne);
+            double expectedResult = 1001;
+            Assertions.assertEquals(expectedResult, result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

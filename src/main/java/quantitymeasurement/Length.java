@@ -9,8 +9,12 @@ public enum Length implements MeasuringUnits {
         this.conversionValue = conversionValue;
     }
 
+    public double getConversionValue() {
+        return conversionValue;
+    }
+
     public double convertToBaseUnit(double value) {
-        return Math.round(value * conversionValue);
+        return Math.round(value * getConversionValue());
     }
 
     @Override
