@@ -908,4 +908,95 @@ public class QuantityTest {
             e.printStackTrace();
         }
     }
+
+    // Comparing Temperature : Celsius, Fahrenheit
+
+    @Test
+    public void given2FahrenheitAnd2Fahrenheit_shouldReturnEqual(){
+        try {
+            TemperatureCheck fahrenheit1 = new TemperatureCheck(TemperatureCheck.Degree.FAHRENHEIT, 2.0);
+            TemperatureCheck fahrenheit2 = new TemperatureCheck(TemperatureCheck.Degree.FAHRENHEIT, 2.0);
+            boolean result = fahrenheit1.compare(fahrenheit2);
+            Assertions.assertTrue(result);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given0FahrenheitAnd2Fahrenheit_shouldReturnNotEqual(){
+        try {
+            TemperatureCheck fahrenheit1 = new TemperatureCheck(TemperatureCheck.Degree.FAHRENHEIT, 0.0);
+            TemperatureCheck fahrenheit2 = new TemperatureCheck(TemperatureCheck.Degree.FAHRENHEIT, 2.0);
+            boolean result = fahrenheit1.compare(fahrenheit2);
+            Assertions.assertFalse(result);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given2CelsiusAnd2Celsius_shouldReturnEqual(){
+        try {
+            TemperatureCheck celsius1 = new TemperatureCheck(TemperatureCheck.Degree.CELSIUS, 2.0);
+            TemperatureCheck celsius2 = new TemperatureCheck(TemperatureCheck.Degree.CELSIUS, 2.0);
+            boolean result = celsius1.compare(celsius2);
+            Assertions.assertTrue(result);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given0CelsiusAnd2Celsius_shouldReturnNotEqual(){
+        try {
+            TemperatureCheck celsius1 = new TemperatureCheck(TemperatureCheck.Degree.CELSIUS, 0.0);
+            TemperatureCheck celsius2 = new TemperatureCheck(TemperatureCheck.Degree.CELSIUS, 2.0);
+            boolean result = celsius1.compare(celsius2);
+            Assertions.assertFalse(result);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given212FahrenheitAnd100Celsius_shouldReturnEqual(){
+        try {
+            TemperatureCheck fahrenheit = new TemperatureCheck(TemperatureCheck.Degree.FAHRENHEIT, 212.0);
+            TemperatureCheck celsius = new TemperatureCheck(TemperatureCheck.Degree.CELSIUS, 100.0);
+            boolean result = fahrenheit.compare(celsius);
+            Assertions.assertTrue(result);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given100CelsiusAnd212Fahrenheit_shouldReturnEqual(){
+        try {
+            TemperatureCheck celsius = new TemperatureCheck(TemperatureCheck.Degree.CELSIUS, 100.0);
+            TemperatureCheck fahrenheit = new TemperatureCheck(TemperatureCheck.Degree.FAHRENHEIT, 212.0);
+            boolean result = celsius.compare(fahrenheit);
+            Assertions.assertTrue(result);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given1FahrenheitAnd1Celsius_shouldReturnNotEqual(){
+        try {
+            TemperatureCheck fahrenheit = new TemperatureCheck(TemperatureCheck.Degree.FAHRENHEIT, 1.0);
+            TemperatureCheck celsius = new TemperatureCheck(TemperatureCheck.Degree.CELSIUS, 1.0);
+            boolean result = fahrenheit.compare(celsius);
+            Assertions.assertFalse(result);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void given1CelsiusAnd1Fahrenheit_shouldReturnNotEqual(){
+        try {
+            TemperatureCheck celsius = new TemperatureCheck(TemperatureCheck.Degree.CELSIUS, 1.0);
+            TemperatureCheck fahrenheit = new TemperatureCheck(TemperatureCheck.Degree.FAHRENHEIT, 1.0);
+            boolean result = celsius.compare(fahrenheit);
+            Assertions.assertFalse(result);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
