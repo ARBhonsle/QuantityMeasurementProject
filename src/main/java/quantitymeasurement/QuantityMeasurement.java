@@ -18,6 +18,13 @@ public class QuantityMeasurement {
         this.unit = unit;
     }
 
+    public double addition(QuantityMeasurement that){
+        if(this.getClass() != that.getClass() || !this.getUnit().canPerformAddition() || !that.getUnit().canPerformAddition()){
+            return -1.0;
+        }
+        return this.getUnit().convertToBaseUnit(this.getValue()) + that.getUnit().convertToBaseUnit(that.getValue());
+    }
+
     public boolean compare(QuantityMeasurement that) {
         if (that == null || this.getClass() != that.getClass()) {
             return false;
@@ -30,9 +37,15 @@ public class QuantityMeasurement {
 
     @Override
     public boolean equals(Object that) {
-        if (this == that) return true;
-        if (that == null) return false;
-        if (getClass() != that.getClass()) return false;
+        if (this == that) {
+            return true;
+        }
+        if (that == null) {
+            return false;
+        }
+        if (getClass() != that.getClass()) {
+            return false;
+        }
         QuantityMeasurement quantity = (QuantityMeasurement) that;
         return Double.compare(quantity.getValue(), value) == 0 && unit == quantity.getUnit();
     }
