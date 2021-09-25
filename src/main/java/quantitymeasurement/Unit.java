@@ -2,19 +2,25 @@ package quantitymeasurement;
 
 import java.util.function.Function;
 
+// Unit type enums
 enum Type {
     LENGTH, VOLUME, WEIGHT, TEMPERATURE
 }
 
 public enum Unit implements MeasuringUnits {
 
+    // Length enums
     FEET(Type.LENGTH, 12.0), INCH(Type.LENGTH, 1.0), YARD(Type.LENGTH, 36.0), CM(Type.LENGTH, 0.4),
+    // Volume enums
     GALLON(Type.VOLUME, 3.78), LITRE(Type.VOLUME, 1.0), ML(Type.VOLUME, 0.001),
+    // Weight enums
     TONNE(Type.WEIGHT, 1000), KG(Type.WEIGHT, 1.0), GRAMS(Type.WEIGHT, 0.001),
+    // Temperature enums
     FAHRENHEIT(Type.TEMPERATURE, 0.0), CELSIUS(Type.TEMPERATURE, 1.0);
 
     private final double conversionValue;
     private final Type unitType;
+
     final Function<Double, Double> degreeFToFahrenheit = (Double degreeF) -> degreeF;
     final Function<Double, Double> degreeCToFahrenheit = (Double degreeC) -> (degreeC * 1.8) + 32;
 
